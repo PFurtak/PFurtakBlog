@@ -17,7 +17,7 @@ const DefaultLayout = ({ children }) => (
             description
             social {
               twitter
-              facebook
+              webpage
               linkedin
               github
               email

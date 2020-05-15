@@ -31,13 +31,13 @@ const Sidebar = ({ siteMetadata }) => (
                 </a>
               </li>
             )}
-            {siteMetadata.social.facebook && (
+            {siteMetadata.social.webpage && (
               <li>
                 <a
-                  href={`https://facebook.com/${siteMetadata.social.facebook}`}
+                  href={`https://${siteMetadata.social.webpage}.com`}
                   target="_blank"
                 >
-                  <i className="fa fa-facebook" aria-hidden="true" />
+                  <i className="fa fa-globe" aria-hidden="true" />
                 </a>
               </li>
             )}

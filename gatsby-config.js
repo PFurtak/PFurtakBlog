@@ -6,7 +6,7 @@ module.exports = {
     siteUrl: `https://www.pfurtak.dev`,
     social: {
       twitter: ``,
-      facebook: `patrick.furtak`,
+      webpage: `patrickfurtak`,
       github: `PFurtak`,
       linkedin: `pfurtak`,
       email: `patrick@patrickfurtak.com`,
@@ -59,7 +59,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `./static/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `./static/think-icon1.png`, // This path is relative to the root of the site.
       },
     },
     // `gatsby-plugin-offline`,
