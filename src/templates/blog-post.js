@@ -1,12 +1,17 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { kebabCase } from 'lodash';
+import { kebabCase } from 'lodash'
 import Img from 'gatsby-image'
 
 import DefaultLayout from '../components/layout'
 import SEO from '../components/seo'
 
 class BlogPostTemplate extends React.Component {
+  onClick() {
+    event.preventDefault()
+    history.back()
+  }
+
   render() {
     const post = this.props.data.markdownRemark
     const { previous, next } = this.props.pageContext
@@ -40,10 +45,15 @@ class BlogPostTemplate extends React.Component {
                   {post.frontmatter.tags &&
                     post.frontmatter.tags.map(tag => (
                       <span key={tag}>
-                        <Link  className="tag" to={`/tags/${kebabCase(tag)}/`}># {tag}</Link>
+                        <Link className="tag" to={`/tags/${kebabCase(tag)}/`}>
+                          # {tag}
+                        </Link>
                       </span>
                     ))}
                 </div>
+                <button className="back-btn" onClick={this.onClick}>
+                  Back
+                </button>
               </div>
             </div>
           </div>
