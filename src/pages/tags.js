@@ -1,13 +1,18 @@
 // https://www.gatsbyjs.org/docs/adding-tags-and-categories-to-blog-posts/#add-tags-to-your-markdown-files
 
-import React from 'react';
-import { Link, graphql } from 'gatsby';
+import React from 'react'
+import { Link, graphql } from 'gatsby'
 
-import { kebabCase } from 'lodash';
+import { kebabCase } from 'lodash'
 
-import Layout from '../components/layout';
+import Layout from '../components/layout'
 const TagsPage = ({ data }) => {
-  const allTags = data.allMarkdownRemark.group;
+  const allTags = data.allMarkdownRemark.group
+
+  const onClick = () => {
+    event.preventDefault()
+    history.back()
+  }
 
   return (
     <Layout>
@@ -22,12 +27,15 @@ const TagsPage = ({ data }) => {
             </li>
           ))}
         </ul>
+        <button className="back-btn back-btn-tags" onClick={onClick}>
+          Back
+        </button>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default TagsPage;
+export default TagsPage
 
 export const pageQuery = graphql`
   query {
@@ -38,4 +46,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
