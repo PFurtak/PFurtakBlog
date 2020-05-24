@@ -28,6 +28,7 @@ const Tags = ({ pageContext, data }) => {
                 <small>
                   <span> | {date}</span>
                 </small>
+                <br />
               </span>
             )
           })}
