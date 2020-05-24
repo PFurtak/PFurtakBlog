@@ -40,7 +40,7 @@ tags: [Firebase, Authentication, Security]
 
 We are assuming you have Node.js installed in your dev environment.
 
-## The Code
+## The Code - Firebase Utility
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In our React project, let's navigate to the src folder and create a new folder for firebase. In that folder, we will create a new JavaScript file called firebase.utils.js to house our firebase config settings.
 
@@ -64,7 +64,7 @@ We are assuming you have Node.js installed in your dev environment.
 
 `export const auth = firebase.auth();`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, we can now configure a couple of options specific to the google sign-in provider we have enabled. We will want to create a variable called provider and set it with the following:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can now configure a couple of options specific to the google sign-in provider we have enabled. We will want to create a variable called provider and set it with the following:
 
 `const provider = new firebase.auth.GoogleAuthProvider();`
 
@@ -72,6 +72,36 @@ We are assuming you have Node.js installed in your dev environment.
 
 `provider.setCustomParameters({ prompt: 'select_account' });`
 
-## Quick Wrap up
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To wrap up the utility file, we will now create and export a signInWithGoogle function passing in the provider we have just created, and then export firebase for later use throughout our application:
+
+`export const signInWithGoogle = () => auth.signInWithPopup(provider);`
+
+`export default firebase;`
+
+![signInWithGoogle function](./utils2.png)
+
+## The Code - Sign-in component
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we just need to bring in our newly created signInWithGoogle function to whatever component you are using to handle sign-ins. In your sign-in component, import signInWithGoogle from firebase. Which, depending on your projects folder structure; should look close to:
+
+`import { signInWithGoogle } from '../../firebase/firebase.utils'`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The last step is to now add an onClick listener to your button component that you wish to use for triggering the sign in with Google pop-up.
+
+![onClick function](./onClick.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Congratulations! You have now set up authentication with Google's sign-in provider. Clicking your button will now trigger the pop-up and allow users to authenticate with your app by using their existing Google account:
+
+![Success!](./popup.png)
+
+## Quick Wrap Up
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This guide was only meant to get you started with using third-party authentication. I wanted to show just how easy it is to integrate this feature into your future applications. In order to fully leverage this feature in your app, you will need to think about assigning the Google user auth object that gets returned on sign-in to your applications state. How you choose to handle this will vary wildly depending on your projects scope and needs. This is why I did not go further with this tutorial. I'll point you towards the official Firebase documentation if you wish to learn more and take this further.
+
+https://firebase.google.com/docs
 
 ## What's next?
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My next article will be on how to integrate Stripe's API into your applications so you can securely accept credit card payments. Who doesn't want to monetize their projects???
+
+Stay tuned!
