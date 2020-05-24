@@ -1,6 +1,6 @@
 ---
 title: 'Authentication with Firebase - How!'
-date: 2020-05-23 16:15:20 +0300
+date: 2020-05-24 13:08:20 +0300
 description: # Add post description (optional)
 img: ./registration.jpg # Add image post (optional)
 tags: [Firebase, Authentication, Security]
@@ -32,7 +32,9 @@ tags: [Firebase, Authentication, Security]
 
 ## Installing The SDK
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now that we have Firebase configured on the console side, we are ready to install the SDK. Installing the SDK gives us new methods to use in our application that allow us make specific calls to our new Firebase project. Open up our terminal and navigate to the projects root directory, and run the command npm i firebase
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now that we have Firebase configured on the console side, we are ready to install the SDK. Installing the SDK gives us new methods to use in our application that allow us make specific calls to our new Firebase project. Open up our terminal and navigate to the projects root directory, and run the command:
+
+`npm i firebase`
 
 ![Install the Firebase SDK via node package manager](./term1.png)
 
@@ -40,12 +42,36 @@ We are assuming you have Node.js installed in your dev environment.
 
 ## The Code
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In our React project, let's navigate to the src folder and create a new folder for firebase. In that folder, we will create a new JavaScript file called firebase.utils.js to house our firebase config settings.
+
+![Firebase config folder structure](./utils.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now let's dive into connecting our app to Firebase. Import the following from the Firebase SDK into our newly created utility file:
+
+`import firebase from 'firebase/app';`
+
+`import 'firebase/auth';`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The above imports allow us to use specific methods provided by Firebase for configuring our application. Remember the config object we set aside for later? Now here is where it comes into play. We will create a new object called config with this data in it. It should look like the following:
+
+![Config object](./config.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now let's initialize our app by passing in the config object and calling the following method:
+
+`firebase.initializeApp(config);`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next let's export the following method as the variable auth so we call this method as we need it through out our application:
+
+`export const auth = firebase.auth();`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, we can now configure a couple of options specific to the google sign-in provider we have enabled. We will want to create a variable called provider and set it with the following:
+
+`const provider = new firebase.auth.GoogleAuthProvider();`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With this new variable, we can now chain on some cutom parameters to the provider with the .setCustomParameters() method. We will enforce the google sign-in pop up for account selection everytime we call the user to sign-in with google:
+
+`provider.setCustomParameters({ prompt: 'select_account' });`
+
 ## Quick Wrap up
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In my opinion the biggest advantage to using Firebase for auth is being able to offload complexity and responsibility. The bigger your organization and the better your talent is, this does become less of a factor. Security professionals earn six-figure salaries for a reason, the work is technically complex, and the stakes are extremely high. I've personally seen how ruthless people can be when a security compromise occurs. "Blame-storming" is an all too accurate term, and you do not want any part of that; trust me.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For small teams and personal projects, I see Firebase as a huge asset. For large enterprise applications who have the personnel to handle authentication themselves, Firebase doesn't make as much sense to use. Depending on the scale of the application, it would be much cheaper to have a security professional or team to make sure everything is secure.
-
 ## What's next?
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now that we know what Firebase authentication excels at and who is a good fit for it, my next post will be a quick overview on how we can add this to our projects. It is actually much easier to implement than you would imagine. Stay tuned!

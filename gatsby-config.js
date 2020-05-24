@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `PFurtak.Dev`,
-    description: `Full-stack software engineer focused on web applications. Always on the lookout for the next cool dev tool.`,
+    description: `Full-stack software engineer focused on web applications. Always on the lookout for new and innovative technologies.`,
     author: `Patrick Furtak`,
     siteUrl: `https://www.pfurtak.dev`,
     social: {
