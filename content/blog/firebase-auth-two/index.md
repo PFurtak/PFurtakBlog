@@ -12,7 +12,7 @@ tags: [Firebase, Authentication, Security]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First we will need to visit the Firebase console. If you do not already have a Google account, you will need to create one and sign in. Once you have an account and have logged in, you should be able to navigate to the admin console at https://console.firebase.google.com
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you are in the conosle, we will want to create a project and run through the creation wizard:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you are in the console, we will want to create a project and run through the creation wizard:
 
 ![Create your project](./create-project.jpg)
 
