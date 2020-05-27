@@ -66,12 +66,34 @@ component we imported earlier. Your component should now look like this:
 
 `stripeKey={publishableKey}`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the token parameter, we need to make the onToken function. This onToken function will take in the token as an argument, and we will just console.log the token for now and alert that a payment was successful. The token gets returned from the Stripe API once a successful payment has gone through, you will need to pass this token to your backend to complete the processing. For now, we are just focused on getting Stripe up and running on the client side. I will have another article for the backend at a later date. Your finished StripeButton component should now look this:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the token property, we need to make the onToken function. This onToken function will take in the token as an argument, and we will just console.log the token for now and alert that a payment was successful. The token gets returned from the Stripe API once a successful payment has gone through, you will need to pass this token to your backend to complete the processing. For now, we are just focused on getting Stripe up and running on the client side. I will have another article for the backend at a later date. Your finished StripeButton component should now look this:
 
 ![Finished StripeButton component](./stripe-button-fin.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next stop is to import this new StripeButton component into your checkout component and pass in the variable that houses your total cost that you are charging.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next stop is to import this new StripeButton component into your checkout component and pass in the variable that houses the total cost that you are charging:
 
-## What's next?
+![Pass in the cost to the new component](./checkout-priced.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now that we know what Firebase authentication excels at and who is a good fit for it, my next post will be a quick overview on how we can add this to our projects. It is actually much easier to implement than you would imagine. Stay tuned!
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Congratulations! You now have Stripe integrated with your React front-end. Launch your project and click the Pay Now button. You will see the following Modal that accepts a Credit Card:
+
+![Success](./modal.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To test the functionality, fill in your information, and use the following test credit card information:
+
+Card number: `4242 4242 4242 4242`
+
+MM / YY: `12 / 20`
+
+CVC: `123`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You should see an alert for successful payment. If you open up dev tools, you should see the token that was generated because of the console.log statement we put in our StripeButton component.
+
+![Token](./token.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This token will need to get passed through to your backend, and then to Stripe to actually complete the transaction; but that is beyond the scope of this article. I just wanted to show you how we can integrate Stripe with our React frontend. We will cover the backend portion in a future article.
+
+## What's Next?
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next we will talk about optimizing your applications and the importance site speed can have for your organization. This topic doesn't really get talked about too often, but it is super important to know how to squeeze every bit of performance out of your web applications.
+
+Thanks for reading!
