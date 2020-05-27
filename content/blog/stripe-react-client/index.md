@@ -40,6 +40,38 @@ component we imported earlier. Your component should now look like this:
 
 ![StripeButton component 1](./stripe-button-1.png)
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The StripeCheckout component takes in predefined props from the react-stripe-checkout. These props configure the options your Stripe modal displays. Here is a list of most of the props you can pass and what they achieve:
+
+![Props to use on StripeCheckout](./checkout-props.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I've configured my StripeCheckout component with the following options:
+
+`label='Pay Now'`
+
+`name='Ecom Ltd.'`
+
+`billingAddress`
+
+`shippingAddress`
+
+`image='https://svgshare.com/i/LWt.svg'`
+
+`` description={`Your total is $${price}`} ``
+
+`amount={priceForStripe}`
+
+`panelLabel='Pay Now'`
+
+`token={onToken}`
+
+`stripeKey={publishableKey}`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the token parameter, we need to make the onToken function. This onToken function will take in the token as an argument, and we will just console.log the token for now and alert that a payment was successful. The token gets returned from the Stripe API once a successful payment has gone through, you will need to pass this token to your backend to complete the processing. For now, we are just focused on getting Stripe up and running on the client side. I will have another article for the backend at a later date. Your finished StripeButton component should now look this:
+
+![Finished StripeButton component](./stripe-button-fin.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next stop is to import this new StripeButton component into your checkout component and pass in the variable that houses your total cost that you are charging.
+
 ## What's next?
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now that we know what Firebase authentication excels at and who is a good fit for it, my next post will be a quick overview on how we can add this to our projects. It is actually much easier to implement than you would imagine. Stay tuned!
