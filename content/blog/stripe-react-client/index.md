@@ -6,23 +6,23 @@ img: ./credit.jpg # Add image post (optional)
 tags: [Stripe, React, Payments]
 ---
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stripe is a payment processor renowned for their developer experience. Using Stripe to take in credit card information is a HUGE time saver during development; it is also a great move regarding security and protecting your users. This guide will get you started on using Stripe to take payments on your React applications. I will be covering the backend setup at a later date, but for now; this is how you set up Stripe on the client side.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stripe is a payment processor renowned for their awesome developer experience. Using Stripe to receive credit card information is a HUGE time saver during development; it is also a great strategy regarding security and protecting your users. This guide will get you started on using Stripe to take payments on your React applications. I will be covering the back-end setup at a later date, but for now; this is how you set up Stripe on the client side.
 
 ## Stripe Console
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First things first, sign up for an account at https://stripe.com and verify your email address. This will give you access to your dashboard.Let's navigate to the developers section, and choose API keys to view our API keys. Save your publishiable key to your clip board, we will be using it shortly.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First things first, sign up for an account at https://stripe.com and verify your email address. This will give you access to the dashboard. Let's navigate to the developers area, and choose API keys in order to view our API keys. Save the publishable key to your clip board, we will be using it shortly.
 
 ![Stripe API keys](./api-keys.png)
 
 ## React Configuration
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now this is the cool stuff! Open up your terminal and install the react-stripe-checkout library with:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now this is the cool stuff! Open up the terminal and install the react-stripe-checkout library with:
 
 `npm i react-stripe-checkout`
 
 ![Install the Stripe library](./term1.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After installing the package, let's navigate to our components folder and create new component for the Stripe button that will trigger the payment modal:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After installing the library, let's navigate to our components folder and create a new component for the Stripe button that will trigger a payment modal:
 
 ![Suggested directory structure](./folder-structure.png)
 
@@ -32,19 +32,19 @@ tags: [Stripe, React, Payments]
 
 `import StripeCheckout from 'react-stripe-checkout';`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our StripeCheckoutButton component will be functional, and take in the price as an argument. One thing to note about Stripe, is that they look for the total amount to charge in cents. This means we will have to instantiate a new variable inside the function called priceForStripe and set it to price \* 100 if you are working with USD. We will also need to assign our publishable key we copied earlier to a variable inside this function as well. This functional component needs to return the
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Our StripeCheckoutButton component will be functional, and take in the price as an argument. One thing to note about Stripe, is that they look for the total amount to charge in cents. This means we will have to instantiate a new variable inside the function called priceForStripe; and set it to price \* 100 if you are working with USD. We will also need to assign our publishable key that we copied earlier to a variable inside this function as well. This functional component needs to return the
 
 `<StripeCheckout />`
 
 component we imported earlier. Your component should now look like this:
 
-![StripeButton component 1](./stripe-button-1.png)
+![StripeButton component](./stripe-button-1.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The StripeCheckout component takes in predefined props from the react-stripe-checkout. These props configure the options your Stripe modal displays. Here is a list of most of the props you can pass and what they achieve:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The StripeCheckout component takes in predefined props from the react-stripe-checkout library. These props configure the options your Stripe modal adheres to. Here is a list of most of the props you can pass and what they achieve:
 
-![Props to use on StripeCheckout](./checkout-props.png)
+![Possible props to pass into StripeCheckout](./checkout-props.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I've configured my StripeCheckout component with the following options:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I've configured my StripeCheckout component with the following properties:
 
 `label='Pay Now'`
 
@@ -66,19 +66,19 @@ component we imported earlier. Your component should now look like this:
 
 `stripeKey={publishableKey}`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the token property, we need to make the onToken function. This onToken function will take in the token as an argument, and we will just console.log the token for now and alert that a payment was successful. The token gets returned from the Stripe API once a successful payment has gone through, you will need to pass this token to your backend to complete the processing. For now, we are just focused on getting Stripe up and running on the client side. I will have another article for the backend at a later date. Your finished StripeButton component should now look this:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the token property, we need to make the onToken function. This onToken function will take in the token as an argument, and we will console.log the token for now and alert that a payment was successful. The token is generated on a successful payment, you will need to pass this token to the back-end to complete payment processing. For now, we are only focused on getting Stripe up and running on the client side. I will have another article for the back-end at a later date. Your finished StripeButton component should now look this:
 
 ![Finished StripeButton component](./stripe-button-fin.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next stop is to import this new StripeButton component into your checkout component and pass in the variable that houses the total cost that you are charging:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next step is to import this new StripeButton component into your checkout component and pass in the variable that houses the total cost of whatever you are charging:
 
 ![Pass in the cost to the new component](./checkout-priced.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Congratulations! You now have Stripe integrated with your React front-end. Launch your project and click the Pay Now button. You will see the following Modal that accepts a Credit Card:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Congratulations! You now have Stripe integrated with your React front-end. Launch your project and click the Pay Now button. You will see the following Modal that accepts a credit card:
 
 ![Success](./modal.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To test the functionality, fill in your information, and use the following test credit card information:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To test functionality, fill in form, and use the following test credit card information:
 
 Card number: `4242 4242 4242 4242`
 
@@ -86,14 +86,14 @@ MM / YY: `12 / 20`
 
 CVC: `123`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You should see an alert for successful payment. If you open up dev tools, you should see the token that was generated because of the console.log statement we put in our StripeButton component.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You should see an alert for successful payment. If you open up the browser's developer tools, you should see the token that was generated because of the console.log statement we wrote in earlier.
 
 ![Token](./token.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This token will need to get passed through to your backend, and then to Stripe to actually complete the transaction; but that is beyond the scope of this article. I just wanted to show you how we can integrate Stripe with our React frontend. We will cover the backend portion in a future article.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This token will need to get passed through to your back-end, and then sent to Stripe to fully complete the transaction; but that is beyond the scope of this article. I only wanted to show how we can integrate Stripe with our React front-end for now. We will cover the back-end logic in a future article.
 
 ## What's Next?
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next we will talk about optimizing your applications and the importance site speed can have for your organization. This topic doesn't really get talked about too often, but it is super important to know how to squeeze every bit of performance out of your web applications.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next we will talk about optimizing your applications and the importance site speed can have for your organization. This topic isn't really covered too often when you are starting out in web development, but it is super important to know how to squeeze every bit of performance out of your web applications.
 
 Thanks for reading!
