@@ -2,7 +2,7 @@
 title: 'Stripe - Getting started with React'
 date: 2020-05-26 17:33:20 +0300
 description: # Add post description (optional)
-img: ./credit.jpg # Add image post (optional)
+img: ./credit-card.jpg # Add image post (optional)
 tags: [Stripe, React, Payments]
 ---
 
@@ -54,7 +54,8 @@ component we imported earlier. Your component should now look like this:
 
 `shippingAddress`
 
-`image='https://svgshare.com/i/LWt.svg'`
+`image=`
+`'https://svgshare.com/i/LWt.svg'`
 
 `` description={`Your total is $${price}`} ``
 
